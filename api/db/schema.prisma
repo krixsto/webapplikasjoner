@@ -1,0 +1,43 @@
+// Don't forget to tell Prisma about your edits to this file using
+// `yarn rw prisma migrate dev` or `yarn rw prisma db push`.
+// `migrate` is like committing while `push` is for prototyping.
+// Read more about both here:
+// https://www.prisma.io/docs/orm/prisma-migrate
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = "native"
+}
+
+model User {
+  user_id     Int     @id @default(autoincrement())
+  user_name   String
+  email_address  String  @unique
+  pw_hash  String
+
+  rooms Room[]
+}
+
+model Room {
+  room_id  Int  @id @default(autoincrement())
+  room_name  String
+
+  user_id  Int
+  user     User  @relation(fields: [user_id], references: [user_id])
+
+  devices  Device[]
+}
+
+model Device {
+  device_id   Int   @id @default(autoincrement())
+  device_name   String
+  device_status   Boolean @default(false)
+
+  room_id   Int
+  room   Room   @relation(fields: [room_id], references: [room_id])
+}
