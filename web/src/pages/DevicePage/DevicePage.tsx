@@ -1,5 +1,7 @@
 // import { Link, routes } from '@redwoodjs/router'
 import { Metadata } from '@redwoodjs/web'
+import MainLayout from 'src/layouts/MainLayout'
+import styling from './DevicePage.module.css'
 
 type DevicePageProps = {
   roomId: string
@@ -10,13 +12,27 @@ const DevicePage = ({ roomId }: DevicePageProps) => {
     <>
       <Metadata title="Device" description="Device page" />
 
-      <h1>DevicePage</h1>
-      <p>
-        Find me in <code>./web/src/pages/DevicePage/DevicePage.tsx</code>
-      </p>
-      <p>
-        The parameter passed to me is <code>{roomId}</code>
-      </p>
+      <MainLayout>
+        <img src="#" alt="LOGO"/>
+        <div className={styling.container}>
+          <div className={styling.sideArea}>
+            <h4>(LEFT ARROW) Air conditioner</h4>
+            <div className={styling.rectangle}>
+              <h4 className={styling.normalText}>ID: 004</h4>
+              <h4 className={styling.normalText}>Status: OFF</h4>
+              <h4 className={styling.normalText}>Duration: 2h</h4>
+            </div>
+            <h4 className={styling.deleteText}>Delete device</h4>
+          </div>
+          <div className={styling.sideArea}>
+            <h4>Schedule</h4>
+            <h4 className={styling.normalText}>Action: (SWITCH)</h4>
+            <h4 className={styling.normalText}>Time: (TIME INPUT)</h4>
+            <button type="submit" className={styling.button}>Save</button>
+          </div>
+        </div>
+      </MainLayout>
+
       {/*
           My default route is named `device`, link to me with:
           `<Link to={routes.device({ roomId: '42' })}>Device 42</Link>`

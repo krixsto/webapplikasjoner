@@ -1,0 +1,108 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 5rem;
+}
+
+.upperLowerArea {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.rectangleContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.sideAreaContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 5rem;
+  justify-content: center;
+}
+
+.sideArea {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+h4 {
+  color: #305CDE;
+}
+
+.leftText {
+  color: gray;
+}
+
+.deleteText {
+  color: red;
+}
+
+.rectangle {
+  border: 2px solid gray;
+  padding: 1rem;
+  text-align: left;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  background-color: lightgray;
+}
+
+.whiteRectangle {
+    border: 2px solid gray;
+  padding: 1rem;
+  text-align: left;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  background-color: white;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 25vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.form a {
+  text-decoration: none;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+
+.input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid gray;
+}
+
+.button {
+  padding: 0.75rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #212020;
+  border-style: none;
+  color: white;
+}
