@@ -11,7 +11,7 @@ const OverviewPage = () => {
       <MainLayout>
         <div className={styling.container}>
           <div className={styling.upperLowerArea}>
-            <h4>Room overview</h4>
+            <h2>Room overview</h2>
             <div className={styling.rectangleContainer}>
               <div className={styling.rectangle}>
                 Home
@@ -23,7 +23,7 @@ const OverviewPage = () => {
           </div>
           <div className={styling.sideAreaContainer}>
             <div className={styling.sideArea}>
-              <h4 className={styling.leftText}>(SWITCH) Turn on all devices</h4>
+              <h2 className={styling.leftText}>(SWITCH) Turn on all devices</h2>
               <div className={styling.whiteRectangle}>
                 Living room
               </div>
@@ -42,7 +42,7 @@ const OverviewPage = () => {
             </div>
           </div>
           <div className={styling.upperLowerArea}>
-            <h4>View members</h4>
+            <h2>View members</h2>
           </div>
         </div>
       </MainLayout>

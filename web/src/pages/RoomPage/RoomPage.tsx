@@ -1,4 +1,4 @@
-// import { Link, routes } from '@redwoodjs/router'
+import { Link, routes } from '@redwoodjs/router'
 import { Metadata } from '@redwoodjs/web'
 import MainLayout from 'src/layouts/MainLayout'
 import styling from './RoomPage.module.css'
@@ -14,18 +14,23 @@ const RoomPage = ({ roomId }: RoomPageProps) => {
 
       <MainLayout>
         <div className={styling.container}>
-          <div className={styling.column}>
-            <h4>(LEFT ARROW) Bedroom</h4>
+          <div className={styling.column1}>
+            <Link to={routes.overview()} className={styling.noLink}>
+              <h2 className={styling.arrowText}>
+                <img src="/arrow.png" alt="Arrow" width={15} height={15} />
+                Air conditioner
+              </h2>
+            </Link>
             <div className={styling.rectangle}>
               Lamp (SWITCH)
             </div>
             <div className={styling.rectangle}>
               Air Conditioner (SWITCH)
             </div>
-            <h4 className={styling.deleteText}>Delete room</h4>
+            <h2 className={styling.deleteText}>Delete room</h2>
           </div>
-          <div className={styling.column}>
-            <h4>Add new socket</h4>
+          <div className={styling.column2}>
+            <h2>Add new socket</h2>
             <label className={styling.label}>
               <input type="text" placeholder="Socket ID" className={styling.input}/>
             </label>
@@ -36,10 +41,6 @@ const RoomPage = ({ roomId }: RoomPageProps) => {
           </div>
         </div>
       </MainLayout>
-
-      <div className={styling.container}>
-
-      </div>
 
       {/*
           My default route is named `room`, link to me with:

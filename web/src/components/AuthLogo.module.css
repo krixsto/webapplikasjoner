@@ -1,6 +1,6 @@
 .container {
   display: flex;
   padding-left: 50%;
-  padding-top: 7%;
-  transform: translate(-40px);
+  padding-top: 5%;
+  transform: translate(-75px);
 }

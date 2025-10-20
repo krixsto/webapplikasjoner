@@ -12,9 +12,10 @@
 
 .form a {
   text-decoration: none;
+  font-size: 1.5rem;
 }
 
-.form h4 {
+.form h2 {
   color: #305CDE;
 }
 
@@ -25,14 +26,14 @@
 }
 
 .input {
-  padding: 0.5rem;
-  font-size: 1rem;
+  padding: 1.5rem;
+  font-size: 1.5rem;
   border: 1px solid gray;
 }
 
 .button {
-  padding: 0.75rem;
-  font-size: 1rem;
+  padding: 1.5rem;
+  font-size: 1.5rem;
   cursor: pointer;
   background-color: #212020;
   border-style: none;
@@ -41,6 +42,7 @@
 
 .rectangle {
   border: 2px solid gray;
-  padding: 1rem;
+  padding: 2rem;
+  font-size: 1.5rem;
   background-color: lightgray;
 }

@@ -11,14 +11,14 @@ const AccountPage = () => {
       <MainLayout>
         <div className={styling.container}>
           <form className={styling.form}>
-            <h4>Account</h4>
+            <h2>Account</h2>
             <div className={styling.rectangle}>
               You are logged in as (E-mail)
             </div>
             <label className={styling.label}>
               <input type="password" placeholder="New password" className={styling.input}/>
             </label>
-            <button type="submit" className={styling.button}>CHANGE PASSWORD</button>
+            <button type="submit" className={styling.button}>UPDATE</button>
             <a href="#">New account?</a>
           </form>
         </div>
