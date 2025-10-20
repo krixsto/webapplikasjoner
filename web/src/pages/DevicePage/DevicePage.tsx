@@ -13,7 +13,6 @@ const DevicePage = ({ roomId }: DevicePageProps) => {
       <Metadata title="Device" description="Device page" />
 
       <MainLayout>
-        <img src="#" alt="LOGO"/>
         <div className={styling.container}>
           <div className={styling.sideArea}>
             <h4>(LEFT ARROW) Air conditioner</h4>

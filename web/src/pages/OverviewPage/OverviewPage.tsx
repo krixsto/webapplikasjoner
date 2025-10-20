@@ -9,7 +9,6 @@ const OverviewPage = () => {
       <Metadata title="Overview" description="Room overview" />
 
       <MainLayout>
-        <img src="#" alt="LOGO"/>
         <div className={styling.container}>
           <div className={styling.upperLowerArea}>
             <h4>Room overview</h4>

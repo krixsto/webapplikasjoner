@@ -13,8 +13,6 @@ const RoomPage = ({ roomId }: RoomPageProps) => {
       <Metadata title="Room" description="Room page" />
 
       <MainLayout>
-
-        <img src="#" alt="LOGO"/>
         <div className={styling.container}>
           <div className={styling.column}>
             <h4>(LEFT ARROW) Bedroom</h4>

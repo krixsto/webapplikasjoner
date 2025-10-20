@@ -1,6 +1,6 @@
 // import { Link, routes } from '@redwoodjs/router'
 import { Metadata } from '@redwoodjs/web'
-import MainLayout from 'src/layouts/MainLayout'
+import AuthLayout from 'src/layouts/AuthLayout'
 import styling from './RegisterPage.module.css'
 
 const RegisterPage = () => {
@@ -8,10 +8,9 @@ const RegisterPage = () => {
     <>
       <Metadata title="Register" description="Register page" />
 
-      <MainLayout>
+      <AuthLayout>
         <div className={styling.container}>
           <form className={styling.form}>
-            <img src="#" alt="LOGO"/>
             <label className={styling.label}>
               <input type="text" placeholder="Enter e-mail" className={styling.input}/>
             </label>
@@ -22,7 +21,7 @@ const RegisterPage = () => {
             <a href="#">Log in to an existing account</a>
           </form>
         </div>
-      </MainLayout>
+      </AuthLayout>
 
       {/*
           My default route is named `register`, link to me with:

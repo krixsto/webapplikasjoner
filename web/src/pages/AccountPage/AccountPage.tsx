@@ -9,7 +9,6 @@ const AccountPage = () => {
       <Metadata title="Account" description="Account page" />
 
       <MainLayout>
-        <img src="#" alt="LOGO"/>
         <div className={styling.container}>
           <form className={styling.form}>
             <h4>Account</h4>
