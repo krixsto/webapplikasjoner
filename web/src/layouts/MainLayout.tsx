@@ -11,8 +11,6 @@ const MainLayout = ({ children }: MainLayoutProps) => {
         <AppLogo/>
       </header>
       <main>{children}</main>
-      <footer>
-      </footer>
     </div>
   )
 }

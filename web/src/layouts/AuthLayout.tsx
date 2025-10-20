@@ -1,4 +1,5 @@
 import AuthLogo from "src/components/AuthLogo"
+import styling from './AuthLayout.module.css'
 
 type AuthLayoutProps = {
   children?: React.ReactNode
@@ -7,7 +8,7 @@ type AuthLayoutProps = {
 const AuthLayout = ({ children }: AuthLayoutProps) => {
   return (
     <div>
-        <AuthLogo/>
+      <AuthLogo/>
       <main>{children}</main>
     </div>
   )
