@@ -13,7 +13,7 @@ const AccountPage = () => {
           <form className={styling.form}>
             <h2>Account</h2>
             <div className={styling.rectangle}>
-              You are logged in as (E-mail)
+              You are logged in as (test)
             </div>
             <label className={styling.label}>
               <input type="password" placeholder="New password" className={styling.input}/>
