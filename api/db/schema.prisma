@@ -15,10 +15,12 @@ generator client {
 }
 
 model User {
-  user_id     Int     @id @default(autoincrement())
-  user_name   String
-  email_address  String  @unique
-  pw_hash  String
+  id     Int     @id @default(autoincrement())
+  email  String  @unique
+  hashedPassword      String
+  salt                String
+  resetToken          String?
+  resetTokenExpiresAt DateTime?
 
   rooms Room[]
 }
@@ -27,8 +29,8 @@ model Room {
   room_id  Int  @id @default(autoincrement())
   room_name  String
 
-  user_id  Int
-  user     User  @relation(fields: [user_id], references: [user_id])
+  id  Int
+  user     User  @relation(fields: [id], references: [id])
 
   devices  Device[]
 }
