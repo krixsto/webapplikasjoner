@@ -1,0 +1,30 @@
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: helloo
+      POSTGRES_PASSWORD: dummy123
+      POSTGRES_DB: smarthome_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  web:
+    build: .
+    working_dir: /app
+    ports:
+      - "8910:8910"
+      - "8911:8911"
+    environment:
+      DATABASE_URL: postgresql://helloo:dummy123@db:5432/smarthome_db
+      SESSION_SECRET: dummysecret
+      WEBHOOK_SECRET: dummywebhook
+    depends_on:
+      - db
+    command: >
+      sh -c "yarn install && yarn rw prisma generate && yarn rw dev"
+
+volumes:
+  db_data:
