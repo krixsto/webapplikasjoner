@@ -18,9 +18,9 @@ services:
       - "8910:8910"
       - "8911:8911"
     environment:
-      DATABASE_URL: postgresql://helloo:dummy123@db:5432/smarthome_db
-      SESSION_SECRET: 5BiTdsFFi3KutKaW+OWO+NKdcw+BVyBObauS/WX1TnMYSieAB9J8WbkFmnU0JBB5
-      WEBHOOK_SECRET: dummywebhook
+      DATABASE_URL: ${DATABASE_URL}
+      SESSION_SECRET: ${SESSION_SECRET}
+      WEBHOOK_SECRET: ${WEBHOOK_SECRET}
     depends_on:
       - db
     command: >
