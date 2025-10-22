@@ -2,6 +2,7 @@
 import { Metadata } from '@redwoodjs/web'
 import MainLayout from 'src/layouts/MainLayout'
 import styling from './OverviewPage.module.css'
+import ScrollableRooms from 'src/components/ScrollableRooms'
 
 const OverviewPage = () => {
   return (
@@ -24,15 +25,7 @@ const OverviewPage = () => {
           <div className={styling.sideAreaContainer}>
             <div className={styling.sideArea}>
               <h2 className={styling.leftText}>(SWITCH) Turn on all devices</h2>
-              <div className={styling.whiteRectangle}>
-                Living room
-              </div>
-              <div className={styling.whiteRectangle}>
-                Bedroom
-              </div>
-              <div className={styling.whiteRectangle}>
-                Bedroom 2
-              </div>
+              <ScrollableRooms/>
             </div>
             <div className={styling.sideArea}>
               <label className={styling.label}>
