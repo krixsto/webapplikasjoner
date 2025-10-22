@@ -35,9 +35,9 @@ const OverviewPage = () => {
               </div>
             </div>
             <div className={styling.sideArea}>
-              <div className={styling.whiteRectangle}>
-                Room name
-              </div>
+              <label className={styling.label}>
+              <input type="text" placeholder="Room name" className={styling.input}/>
+            </label>
               <button type="submit" className={styling.button}>Add</button>
             </div>
           </div>
