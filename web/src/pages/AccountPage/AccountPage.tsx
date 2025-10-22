@@ -2,8 +2,11 @@
 import { Metadata } from '@redwoodjs/web'
 import MainLayout from 'src/layouts/MainLayout'
 import styling from './AccountPage.module.css'
+import { useAuth } from 'src/auth'
 
 const AccountPage = () => {
+  const { currentUser, logOut } = useAuth()
+
   return (
     <>
       <Metadata title="Account" description="Account page" />
@@ -13,13 +16,13 @@ const AccountPage = () => {
           <form className={styling.form}>
             <h2>Account</h2>
             <div className={styling.rectangle}>
-              You are logged in as (test)
+              You are logged in as {currentUser.email}
             </div>
             <label className={styling.label}>
               <input type="password" placeholder="New password" className={styling.input}/>
             </label>
             <button type="submit" className={styling.button}>UPDATE</button>
-            <a href="#">New account?</a>
+            <a href="#" onClick={(e) => { e.preventDefault(); logOut({ redirectTo: '/' }) }}>Log out</a>
           </form>
         </div>
       </MainLayout>
