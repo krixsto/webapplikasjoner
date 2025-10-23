@@ -19,14 +19,13 @@ model User {
   email               String  @unique
   hashedPassword      String
   salt                String
-  resetToken          String?
-  resetTokenExpiresAt DateTime?
 }
 
 model Room {
   id        Int     @id @default(autoincrement())
   room_name String
   userId    Int
+  home_work String
   devices   Device[]
 }
 

@@ -7,11 +7,8 @@ export const rooms = () => {
 
 interface CreateRoomArgs {
   input: Prisma.RoomCreateInput
-  userId: number
 }
 
-export const createRoom = ({ input, userId }: CreateRoomArgs) => {
-  return db.room.create({
-    data: { ...input, userId },
-  })
+export const createRoom = ({ input }: CreateRoomArgs) => {
+  return db.room.create({ data: input })
 }

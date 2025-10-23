@@ -9,8 +9,8 @@ import React from 'react'
 import { useAuth } from 'src/auth'
 
 const CREATE_ROOM_MUTATION = gql`
-  mutation CreateRoomMutation($input: CreateRoomInput!, $userId: Int!) {
-    createRoom(input: $input, userId: $userId) {
+  mutation CreateRoomMutation($input: CreateRoomInput!) {
+    createRoom(input: $input) {
       id
       room_name
       userId
@@ -21,6 +21,7 @@ const CREATE_ROOM_MUTATION = gql`
 const OverviewPage = () => {
   const { currentUser } = useAuth()
   const [roomName, setRoomName] = useState('')
+  const [homeWork, setHomeWork] = useState('home')
   const [createRoom, { loading, error }] = useMutation(CREATE_ROOM_MUTATION, {
     onCompleted: () => {
       setRoomName('')
@@ -29,11 +30,7 @@ const OverviewPage = () => {
 
   const onSubmit = async (e: React.FormEvent) => {
     if (!roomName.trim()) return
-    await createRoom({
-      variables: {
-        input: { room_name: roomName },
-        userId: currentUser.id,
-       },
+    await createRoom({ variables: { input: { room_name: roomName, userId: currentUser.id, home_work: homeWork }},
     })
   }
 
@@ -46,10 +43,10 @@ const OverviewPage = () => {
           <div className={styling.upperLowerArea}>
             <h2>Room overview</h2>
             <div className={styling.rectangleContainer}>
-              <div className={styling.rectangle}>
+              <div role="button" tabIndex={0} onClick={() => setHomeWork('home')} className={`${styling.rectangle} ${homeWork === 'home' ? styling.selected : ''}`}>
                 Home
               </div>
-              <div className={styling.rectangle}>
+              <div role="button" tabIndex={0} onClick={() => setHomeWork('work')} className={`${styling.rectangle} ${homeWork === 'work' ? styling.selected : ''}`}>
                 Work
               </div>
             </div>

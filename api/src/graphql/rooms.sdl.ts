@@ -5,6 +5,7 @@ export const schema = gql`
     id: Int!
     room_name: String!
     userId: Int!
+    home_work: String!
   }
 
   type Query {
@@ -13,9 +14,11 @@ export const schema = gql`
 
   input CreateRoomInput {
     room_name: String!
+    userId: Int!
+    home_work: String!
   }
 
   type Mutation {
-    createRoom(input: CreateRoomInput!, userId: Int!): Room! @requireAuth
+    createRoom(input: CreateRoomInput!): Room! @requireAuth
   }
 `
