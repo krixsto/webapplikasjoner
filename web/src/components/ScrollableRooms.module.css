@@ -20,3 +20,8 @@
   padding-right: 10rem;
   background-color: white;
 }
+
+.roomLinks {
+  text-decoration: none;
+  color: black;
+}
