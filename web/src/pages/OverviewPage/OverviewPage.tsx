@@ -3,7 +3,7 @@ import { Metadata } from '@redwoodjs/web'
 import MainLayout from 'src/layouts/MainLayout'
 import styling from './OverviewPage.module.css'
 import ScrollableRooms from 'src/components/ScrollableRooms'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { gql, useMutation } from '@redwoodjs/web'
 import React from 'react'
 import { useAuth } from 'src/auth'
@@ -21,12 +21,16 @@ const CREATE_ROOM_MUTATION = gql`
 const OverviewPage = () => {
   const { currentUser } = useAuth()
   const [roomName, setRoomName] = useState('')
-  const [homeWork, setHomeWork] = useState('home')
+  const [homeWork, setHomeWork] = useState<'home' | 'work'>(() => (localStorage.getItem("homeWork") as 'home' | 'work') || 'home');
   const [createRoom, { loading, error }] = useMutation(CREATE_ROOM_MUTATION, {
     onCompleted: () => {
       setRoomName('')
     },
   })
+
+  useEffect(() => {
+    localStorage.setItem("homeWork", homeWork);
+  }, [homeWork])
 
   const onSubmit = async (e: React.FormEvent) => {
     if (!roomName.trim()) return
