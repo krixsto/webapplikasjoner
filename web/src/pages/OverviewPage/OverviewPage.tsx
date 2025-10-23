@@ -54,7 +54,7 @@ const OverviewPage = () => {
           <div className={styling.sideAreaContainer}>
             <div className={styling.sideArea}>
               <h2 className={styling.leftText}>(SWITCH) Turn on all devices</h2>
-              <ScrollableRooms/>
+              <ScrollableRooms selectedHomeWork={homeWork}/>
             </div>
             <div className={styling.sideArea}>
               <form onSubmit={onSubmit} className={styling.form}>
