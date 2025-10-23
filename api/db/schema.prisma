@@ -26,7 +26,6 @@ model Room {
   room_name String
   userId    Int
   home_work String
-  devices   Device[]
 }
 
 model Device {
@@ -34,5 +33,4 @@ model Device {
   device_name   String
   device_status Boolean @default(false)
   room_id       Int
-  room          Room    @relation(fields: [id], references: [id])
 }
