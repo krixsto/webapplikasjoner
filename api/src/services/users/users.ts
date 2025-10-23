@@ -14,3 +14,7 @@ export const updateMyPassword = async ({ newPassword }: {newPassword: string}) =
 
   return { message: 'Password updated successfully' }
 }
+
+export const users = () => {
+  return db.user.findMany({select: { id: true, email: true }})
+}

@@ -4,9 +4,10 @@ import MainLayout from 'src/layouts/MainLayout'
 import styling from './OverviewPage.module.css'
 import ScrollableRooms from 'src/components/ScrollableRooms'
 import { useState, useEffect } from 'react'
-import { gql, useMutation } from '@redwoodjs/web'
+import { gql, useMutation, useQuery } from '@redwoodjs/web'
 import React from 'react'
 import { useAuth } from 'src/auth'
+import UserListDisplay from 'src/components/UserListDisplay'
 
 const CREATE_ROOM_MUTATION = gql`
   mutation CreateRoomMutation($input: CreateRoomInput!) {
@@ -18,10 +19,21 @@ const CREATE_ROOM_MUTATION = gql`
   }
 `
 
+const USERS_QUERY = gql`
+  query UsersQuery {
+    users {
+      id
+      email
+    }
+  }
+`
+
 const OverviewPage = () => {
   const { currentUser } = useAuth()
   const [roomName, setRoomName] = useState('')
   const [homeWork, setHomeWork] = useState<'home' | 'work'>(() => (localStorage.getItem("homeWork") as 'home' | 'work') || 'home');
+  const [showUserList, setShowUserList] = useState(false)
+  const { data: user_data } = useQuery(USERS_QUERY)
   const [createRoom, { loading, error }] = useMutation(CREATE_ROOM_MUTATION, {
     onCompleted: () => {
       setRoomName('')
@@ -70,7 +82,15 @@ const OverviewPage = () => {
             </div>
           </div>
           <div className={styling.upperLowerArea}>
-            <h2>View members</h2>
+            <h2 style={{ cursor: 'pointer' }} onClick={() => setShowUserList(!showUserList)}>{showUserList ? '' : 'View members'}</h2>
+            {showUserList && user_data && (
+              <div className={styling.userDisplayOverlay}>
+                <div className={styling.userDisplayContent}>
+                  <UserListDisplay users={user_data.users}/>
+                  <h2 style={{ cursor: 'pointer' }} onClick={() => setShowUserList(!showUserList)}>{showUserList ? 'Hide members' : 'View members'}</h2>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </MainLayout>

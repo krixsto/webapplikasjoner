@@ -5,6 +5,7 @@ import styling from './LoginPage.module.css'
 import { useAuth } from 'src/auth'
 import { navigate, routes } from '@redwoodjs/router'
 import { useState } from 'react'
+import { React } from 'react'
 
 const LoginPage = () => {
   const { logIn } = useAuth()
