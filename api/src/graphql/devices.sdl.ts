@@ -1,8 +1,8 @@
 import { gql, useMutation } from '@redwoodjs/web'
 
 export const schema = gql`
-
   type Device {
+    id: Int!
     device_name: String!
     room_id: Int!
   }

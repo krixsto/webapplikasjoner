@@ -45,7 +45,7 @@ const RoomPage = ({ roomId }: RoomPageProps) => {
             <Link to={routes.overview()} className={styling.noLink}>
               <h2 className={styling.arrowText}>
                 <img src="/arrow.png" alt="Arrow" width={15} height={15} />
-                Overview
+                Room overview
               </h2>
             </Link>
             <ScrollableDevices selectedRoomId={parseInt(roomId, 10)}/>

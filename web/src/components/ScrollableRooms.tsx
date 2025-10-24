@@ -28,7 +28,7 @@ const ScrollableRooms: React.FC<ScrollableRoomsProps> = ({ selectedHomeWork }) =
       {filteredRooms.map((room) => (
         <div key={room.id} className={styling.rectangle}>
           <Link to={routes.room({ roomId: room.id.toString() })} className={styling.roomLinks}>{room.room_name}</Link>
-          </div>
+        </div>
       ))}
     </div>
   )

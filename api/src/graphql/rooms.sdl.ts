@@ -9,7 +9,7 @@ export const schema = gql`
   }
 
   type Query {
-    rooms: [Room!]! @requireAuth
+    rooms: [Room!]! @skipAuth
   }
 
   input CreateRoomInput {
@@ -19,6 +19,6 @@ export const schema = gql`
   }
 
   type Mutation {
-    createRoom(input: CreateRoomInput!): Room! @requireAuth
+    createRoom(input: CreateRoomInput!): Room! @skipAuth
   }
 `

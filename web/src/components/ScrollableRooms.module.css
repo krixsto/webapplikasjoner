@@ -11,7 +11,6 @@
 }
 
 .rectangle {
-  scroll-snap-align: start;
   border: 2px solid gray;
   padding: 2rem;
   text-align: left;
@@ -24,4 +23,12 @@
 .roomLinks {
   text-decoration: none;
   color: black;
+}
+
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+.rectangle:hover {
+  border: 2px solid black;
 }

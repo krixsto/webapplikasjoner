@@ -1,10 +1,12 @@
 import { useQuery, gql } from '@redwoodjs/web'
 import styling from './ScrollableDevices.module.css'
 import React from 'react'
+import { Link, routes } from '@redwoodjs/router'
 
 const DEVICES_QUERY = gql`
   query DEVICES_QUERY {
     devices {
+      id
       device_name
       room_id
     }
@@ -24,7 +26,11 @@ const ScrollableDevices: React.FC<ScrollableDevicesProps> = ({ selectedRoomId })
   return (
     <div className={styling.container}>
       {filteredDevices.map((device) => (
-        <div key={device.id} className={styling.rectangle}>{device.device_name}</div>
+        device?.id ? (
+          <div key={device.id} className={styling.rectangle}>
+            <Link to={routes.device({ roomId: device.room_id.toString(), deviceId: device.id.toString() })} className={styling.deviceLinks}>{device.device_name}</Link>
+          </div>
+        ) : null
       ))}
     </div>
   )

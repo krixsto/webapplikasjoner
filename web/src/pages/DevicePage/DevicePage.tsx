@@ -15,10 +15,10 @@ const DevicePage = ({ roomId }: DevicePageProps) => {
       <MainLayout>
         <div className={styling.container}>
           <div className={styling.sideArea1}>
-            <Link to={routes.room({ roomId: "1" })} className={styling.noLink}>
+            <Link to={routes.room({ roomId })} className={styling.noLink}>
               <h2 className={styling.arrowText}>
                 <img src="/arrow.png" alt="Arrow" width={15} height={15} />
-                Air conditioner
+                Device overview
               </h2>
             </Link>
             <div className={styling.rectangle}>
