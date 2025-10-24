@@ -56,8 +56,8 @@ const OverviewPage = () => {
 
       <MainLayout>
         <div className={styling.container}>
+          <h1>Room overview</h1>
           <div className={styling.upperLowerArea}>
-            <h2>Room overview</h2>
             <div className={styling.rectangleContainer}>
               <div role="button" tabIndex={0} onClick={() => setHomeWork('home')} className={`${styling.rectangle} ${homeWork === 'home' ? styling.selected : ''}`}>
                 Home

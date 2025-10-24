@@ -1,13 +1,16 @@
-.form {
+.outerContainer {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 22%;
   gap: 1.5rem;
-  width: 25vw;
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+  align-items: center;
 }
 
 .form a {
@@ -25,12 +28,6 @@
   font-weight: bold;
 }
 
-.input {
-  padding: 1.5rem;
-  font-size: 1.5rem;
-  border: 1px solid gray;
-}
-
 .button {
   padding: 1.5rem;
   font-size: 1.5rem;
@@ -42,7 +39,10 @@
 
 .rectangle {
   border: 2px solid gray;
-  padding: 2rem;
+  padding: 1.5rem;
+  width: 100%;
   font-size: 1.5rem;
   background-color: lightgray;
+  text-align: center;
+  box-sizing: border-box;
 }

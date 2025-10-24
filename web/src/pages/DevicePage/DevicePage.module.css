@@ -1,7 +1,13 @@
+.outerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .container {
   display: flex;
   flex-direction: row;
-  position: absolute;
+  position: relative;
   width: 100%;
   height: 50%;
   gap: 5rem;

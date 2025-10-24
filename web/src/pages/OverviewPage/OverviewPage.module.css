@@ -1,10 +1,11 @@
 .container {
   display: flex;
   flex-direction: column;
-  position: absolute;
+  position: relative;
   width: 100%;
   height: 50%;
   gap: 2rem;
+  align-items: center;
 }
 
 .upperLowerArea {
@@ -42,12 +43,13 @@
   text-align: center;
 }
 
-h2 {
+.upperLowerArea h2 {
   color: #305CDE;
 }
 
 .leftText {
-  color: gray;
+  color: black;
+  opacity: 0.75;
 }
 
 .deleteText {
@@ -63,6 +65,7 @@ h2 {
   background-color: lightgray;
   cursor: pointer;
   user-select: none;
+  opacity: 0.75;
 }
 
 .whiteRectangle {
@@ -79,6 +82,7 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  opacity: 0.75;
 }
 
 .form a {
@@ -107,6 +111,10 @@ h2 {
   width: 100%;
 }
 
+h1 {
+  padding: 1.5rem;
+}
+
 .selected {
   background-color: gray;
 }
@@ -127,5 +135,17 @@ h2 {
   background-color: white;
   padding: 20px;
   width: 300px;
-  border-radius: 4px;
+}
+
+.rectangle:hover {
+  border: 2px solid black;
+  opacity: 0.85;
+}
+
+.button:hover {
+  box-shadow: inset 0 0 0 100px black;
+}
+
+.upperLowerArea h2:hover {
+  color: blue;
 }

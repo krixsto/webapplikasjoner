@@ -40,19 +40,20 @@ const RoomPage = ({ roomId }: RoomPageProps) => {
       <Metadata title="Room" description="Room page" />
 
       <MainLayout>
-        <div className={styling.container}>
-          <div className={styling.column1}>
-            <Link to={routes.overview()} className={styling.noLink}>
-              <h2 className={styling.arrowText}>
-                <img src="/arrow.png" alt="Arrow" width={15} height={15} />
-                Room overview
-              </h2>
-            </Link>
-            <ScrollableDevices selectedRoomId={parseInt(roomId, 10)}/>
-            <h2 className={styling.deleteText}>Delete room</h2>
-          </div>
-          <div className={styling.column2}>
-            <label className={styling.label}>
+        <div className={styling.outerContainer}>
+          <h1>Device overview</h1>
+          <div className={styling.container}>
+            <div className={styling.column1}>
+              <Link to={routes.overview()} className={styling.noLink}>
+                <h2 className={styling.arrowText}>
+                  <img src="/arrow.png" alt="Arrow" width={15} height={15} />
+                  Room overview
+                </h2>
+              </Link>
+              <ScrollableDevices selectedRoomId={parseInt(roomId, 10)}/>
+              <h2 className={styling.deleteText}>Delete room</h2>
+            </div>
+            <div className={styling.column2}>
               <form onSubmit={onSubmit}>
                 <h2>Add new device</h2>
                 <label className={styling.label}>
@@ -60,7 +61,7 @@ const RoomPage = ({ roomId }: RoomPageProps) => {
                   <button type="submit" className={styling.button}>Add</button>
                 </label>
               </form>
-            </label>
+            </div>
           </div>
         </div>
       </MainLayout>

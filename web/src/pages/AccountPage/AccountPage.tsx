@@ -13,14 +13,14 @@ const AccountPage = () => {
       <Metadata title="Account" description="Account page" />
 
       <MainLayout>
-        <div className={styling.container}>
-          <form className={styling.form}>
-            <h2>Account</h2>
+        <div className={styling.outerContainer}>
+          <h1>Account</h1>
+          <div className={styling.container}>
             <div className={styling.rectangle}>
               You are logged in as {currentUser.email}
             </div>
-          </form>
-          <UpdatePasswordSection/>
+            <UpdatePasswordSection/>
+          </div>
         </div>
       </MainLayout>
 

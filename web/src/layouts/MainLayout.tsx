@@ -1,12 +1,14 @@
 import AppLogo from "src/components/AppLogo"
 import AccountLogo from "src/components/AccountLogo"
 import styling from './MainLayout.module.css'
+import { useParams } from '@redwoodjs/router'
 
 type MainLayoutProps = {
   children?: React.ReactNode
 }
 
 const MainLayout = ({ children }: MainLayoutProps) => {
+
   return (
     <div className={styling.container}>
       <header>

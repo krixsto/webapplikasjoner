@@ -13,26 +13,29 @@ const DevicePage = ({ roomId }: DevicePageProps) => {
       <Metadata title="Device" description="Device page" />
 
       <MainLayout>
-        <div className={styling.container}>
-          <div className={styling.sideArea1}>
-            <Link to={routes.room({ roomId })} className={styling.noLink}>
-              <h2 className={styling.arrowText}>
-                <img src="/arrow.png" alt="Arrow" width={15} height={15} />
-                Device overview
-              </h2>
-            </Link>
-            <div className={styling.rectangle}>
-              <h2 className={styling.normalText}>ID: 004</h2>
-              <h2 className={styling.normalText}>Status: OFF</h2>
-              <h2 className={styling.normalText}>Duration: 2h</h2>
+        <div className={styling.outerContainer}>
+          <h1>Room overview</h1>
+          <div className={styling.container}>
+            <div className={styling.sideArea1}>
+              <Link to={routes.room({ roomId })} className={styling.noLink}>
+                <h2 className={styling.arrowText}>
+                  <img src="/arrow.png" alt="Arrow" width={15} height={15} />
+                  Device overview
+                </h2>
+              </Link>
+              <div className={styling.rectangle}>
+                <h2 className={styling.normalText}>ID: 004</h2>
+                <h2 className={styling.normalText}>Status: OFF</h2>
+                <h2 className={styling.normalText}>Duration: 2h</h2>
+              </div>
+              <h2 className={styling.deleteText}>Delete device</h2>
             </div>
-            <h2 className={styling.deleteText}>Delete device</h2>
-          </div>
-          <div className={styling.sideArea2}>
-            <h2>Schedule</h2>
-            <h2 className={styling.normalText}>Action: (SWITCH)</h2>
-            <h2 className={styling.normalText}>Time: (TIME INPUT)</h2>
-            <button type="submit" className={styling.button}>Save</button>
+            <div className={styling.sideArea2}>
+              <h2>Schedule</h2>
+              <h2 className={styling.normalText}>Action: (SWITCH)</h2>
+              <h2 className={styling.normalText}>Time: (TIME INPUT)</h2>
+              <button type="submit" className={styling.button}>Save</button>
+            </div>
           </div>
         </div>
       </MainLayout>
