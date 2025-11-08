@@ -1,4 +1,5 @@
-import { gql, useMutation } from '@redwoodjs/web'
+import { useMutation } from '@redwoodjs/web'
+import gql from 'graphql-tag'
 
 export const schema = gql`
   type Device {
@@ -22,6 +23,7 @@ export const schema = gql`
 
   type Mutation {
     createDevice(input: CreateDeviceInput!): Device! @requireAuth
+    deleteDevice(id: Int!): Device! @requireAuth
   }
 `
 

@@ -1,11 +1,12 @@
-import { Link, routes } from '@redwoodjs/router'
-import { Metadata } from '@redwoodjs/web'
+import { Link, routes, navigate } from '@redwoodjs/router'
+import { Metadata, useMutation } from '@redwoodjs/web'
 import MainLayout from 'src/layouts/MainLayout'
 import styling from './RoomPage.module.css'
 import { useState } from 'react'
 import React from 'react'
-import { gql, useMutation } from '@redwoodjs/web'
+import gql from 'graphql-tag'
 import ScrollableDevices from 'src/components/ScrollableDevices'
+import DeleteButton from 'src/components/DeleteButton'
 
 const CREATE_DEVICE_MUTATION = gql`
   mutation CreateDeviceMutation($input: CreateDeviceInput!) {
@@ -14,6 +15,14 @@ const CREATE_DEVICE_MUTATION = gql`
       room_id
     }
   }
+`
+
+const DELETE_ROOM_MUTATION = gql`
+  mutation DeleteRoomMutation($id: Int!) {
+    deleteRoom(id: $id) {
+      id
+  }
+}
 `
 
 type RoomPageProps = {
@@ -27,6 +36,12 @@ const RoomPage = ({ roomId }: RoomPageProps) => {
         setDeviceName('')
       },
     })
+
+  const [deleteRoom] = useMutation(DELETE_ROOM_MUTATION, {
+    onCompleted: () => {
+      navigate(routes.overview())
+    },
+  })
 
   const onSubmit = async (e: React.FormEvent) => {
       if (!deviceName.trim()) return
@@ -51,7 +66,14 @@ const RoomPage = ({ roomId }: RoomPageProps) => {
                 </h2>
               </Link>
               <ScrollableDevices selectedRoomId={parseInt(roomId, 10)}/>
-              <h2 className={styling.deleteText}>Delete room</h2>
+
+              <DeleteButton
+              onClick={() => deleteRoom({ variables: { id: parseInt(roomId, 10) } })}
+              className={styling.deleteText}
+              >
+                Delete room
+              </DeleteButton>
+
             </div>
             <div className={styling.column2}>
               <form onSubmit={onSubmit}>

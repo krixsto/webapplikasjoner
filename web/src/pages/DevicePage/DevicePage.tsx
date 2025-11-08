@@ -1,13 +1,25 @@
-import { Link, routes } from '@redwoodjs/router'
-import { Metadata } from '@redwoodjs/web'
+import { Link, routes, navigate, useParams } from '@redwoodjs/router'
+import { Metadata, useMutation } from '@redwoodjs/web'
 import MainLayout from 'src/layouts/MainLayout'
 import styling from './DevicePage.module.css'
+import DeleteButton from 'src/components/DeleteButton'
+import gql from 'graphql-tag'
 
-type DevicePageProps = {
-  roomId: string
+const DELETE_DEVICE_MUTATION = gql`
+  mutation DeleteDeviceMutation($id: Int!) {
+    deleteDevice(id: $id) {
+      id
+  }
 }
+`
+const DevicePage = () => {
+  const { roomId, deviceId } = useParams()
+  const [deleteDevice] = useMutation(DELETE_DEVICE_MUTATION, {
+    onCompleted: () => {
+      navigate(routes.room({ roomId }))
+    },
+  })
 
-const DevicePage = ({ roomId }: DevicePageProps) => {
   return (
     <>
       <Metadata title="Device" description="Device page" />
@@ -28,7 +40,14 @@ const DevicePage = ({ roomId }: DevicePageProps) => {
                 <h2 className={styling.normalText}>Status: OFF</h2>
                 <h2 className={styling.normalText}>Duration: 2h</h2>
               </div>
-              <h2 className={styling.deleteText}>Delete device</h2>
+
+              <DeleteButton
+              onClick={() => deleteDevice({ variables: { id: parseInt(deviceId, 10) } })}
+              className={styling.deleteText}
+              >
+                Delete device
+              </DeleteButton>
+
             </div>
             <div className={styling.sideArea2}>
               <h2>Schedule</h2>

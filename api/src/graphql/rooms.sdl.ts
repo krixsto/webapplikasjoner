@@ -1,4 +1,4 @@
-import { gql, useMutation } from '@redwoodjs/web'
+import gql from 'graphql-tag'
 
 export const schema = gql`
   type Room {
@@ -19,6 +19,7 @@ export const schema = gql`
   }
 
   type Mutation {
-    createRoom(input: CreateRoomInput!): Room! @skipAuth
+    createRoom(input: CreateRoomInput!): Room! @requireAuth
+    deleteRoom(id: Int!): Room! @requireAuth
   }
 `

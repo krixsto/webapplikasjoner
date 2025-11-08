@@ -17,6 +17,7 @@ services:
     ports:
       - "8910:8910"
       - "8911:8911"
+      - "5555:5555"
     environment:
       DATABASE_URL: ${DATABASE_URL}
       SESSION_SECRET: ${SESSION_SECRET}

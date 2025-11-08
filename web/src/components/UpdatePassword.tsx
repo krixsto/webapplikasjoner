@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { gql, useMutation } from '@redwoodjs/web'
+import { useMutation } from '@redwoodjs/web'
+import gql from 'graphql-tag'
 import * as React from 'react'
 import styling from './UpdatePassword.module.css'
 import { useAuth } from 'src/auth'

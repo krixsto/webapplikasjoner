@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useQuery } from '@redwoodjs/web'
-import { gql } from '@redwoodjs/web'
+import gql from 'graphql-tag'
 
 const UserListDisplay = ({ users }) => {
 

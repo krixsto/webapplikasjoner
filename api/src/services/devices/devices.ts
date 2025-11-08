@@ -9,6 +9,14 @@ interface CreateDeviceArgs {
   input: Prisma.DeviceCreateInput
 }
 
+type DeleteDeviceArgs = {
+  id: number
+}
+
 export const createDevice = ({ input }: CreateDeviceArgs) => {
   return db.device.create({ data: input })
+}
+
+export const deleteDevice = ({ id }: DeleteDeviceArgs) => {
+  return db.device.delete({where: { id } })
 }

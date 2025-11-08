@@ -1,4 +1,5 @@
-import { useQuery, gql } from '@redwoodjs/web'
+import { useQuery } from '@redwoodjs/web'
+import gql from 'graphql-tag'
 import styling from './ScrollableDevices.module.css'
 import React from 'react'
 import { Link, routes } from '@redwoodjs/router'

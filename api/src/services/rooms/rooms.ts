@@ -9,6 +9,14 @@ interface CreateRoomArgs {
   input: Prisma.RoomCreateInput
 }
 
+type DeleteRoomArgs = {
+  id: number
+}
+
 export const createRoom = ({ input }: CreateRoomArgs) => {
   return db.room.create({ data: input })
+}
+
+export const deleteRoom = ({ id }: DeleteRoomArgs) => {
+  return db.room.delete({ where: { id } })
 }

@@ -1,4 +1,5 @@
-import { gql, useMutation } from '@redwoodjs/web'
+import { useMutation } from '@redwoodjs/web'
+import gql from 'graphql-tag'
 
 export const schema = gql`
 
