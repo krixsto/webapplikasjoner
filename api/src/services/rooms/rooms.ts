@@ -1,8 +1,12 @@
 import { db } from 'src/lib/db'
 import type { Prisma } from '@prisma/client'
+import { context } from '@redwoodjs/graphql-server'
 
 export const rooms = () => {
-  return db.room.findMany()
+  const userId = context.currentUser?.id
+  return db.room.findMany({
+    where: { userId }
+  })
 }
 
 interface CreateRoomArgs {
