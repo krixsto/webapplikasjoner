@@ -26,7 +26,7 @@ const DevicePage = () => {
 
       <MainLayout>
         <div className={styling.outerContainer}>
-          <h1>Room overview</h1>
+          <h1>Details</h1>
           <div className={styling.container}>
             <div className={styling.sideArea1}>
               <Link to={routes.room({ roomId })} className={styling.noLink}>
