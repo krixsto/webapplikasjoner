@@ -24,6 +24,7 @@ export const schema = gql`
   type Mutation {
     createDevice(input: CreateDeviceInput!): Device! @requireAuth
     deleteDevice(id: Int!): Device! @requireAuth
+    toggleAllDevices(status: Boolean!): Int! @requireAuth
   }
 `
 

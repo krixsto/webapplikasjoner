@@ -9,6 +9,7 @@ import gql from 'graphql-tag'
 import React from 'react'
 import { useAuth } from 'src/auth'
 import UserListDisplay from 'src/components/UserListDisplay'
+import ToggleSwitch from 'src/components/ToggleSwitch'
 
 const CREATE_ROOM_MUTATION = gql`
   mutation CreateRoomMutation($input: CreateRoomInput!) {
@@ -29,7 +30,15 @@ const USERS_QUERY = gql`
   }
 `
 
+const TOGGLE_ALL_DEVICES = gql`
+  mutation ToggleAllDevices($status: Boolean!) {
+    toggleAllDevices(status: $status)
+  }
+`
+
 const OverviewPage = () => {
+  const [allDevicesOn, setAllDevicesOn] = useState(false)
+  const [toggleAllDevices] = useMutation(TOGGLE_ALL_DEVICES)
   const { currentUser } = useAuth()
   const [roomName, setRoomName] = useState('')
   const [homeWork, setHomeWork] = useState<'home' | 'work'>(() => (localStorage.getItem("homeWork") as 'home' | 'work') || 'home');
@@ -70,7 +79,17 @@ const OverviewPage = () => {
           </div>
           <div className={styling.sideAreaContainer}>
             <div className={styling.sideArea}>
-              <h2 className={styling.leftText}>(SWITCH) Turn on all devices</h2>
+
+            <ToggleSwitch
+            checked={allDevicesOn}
+            onChange={() => {
+              const newStatus = !allDevicesOn
+              toggleAllDevices({ variables: { status: newStatus } })
+              setAllDevicesOn(newStatus)
+            }}
+            label={allDevicesOn ? 'Turn off all devices' : 'Turn on all devices'}
+          />
+
               <ScrollableRooms selectedHomeWork={homeWork}/>
             </div>
             <div className={styling.sideArea}>
