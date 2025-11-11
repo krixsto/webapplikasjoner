@@ -3,6 +3,7 @@ import gql from 'graphql-tag'
 import styling from './ScrollableDevices.module.css'
 import React from 'react'
 import { Link, routes } from '@redwoodjs/router'
+import ToggleSwitch from './ToggleSwitch'
 
 const DEVICES_QUERY = gql`
   query DEVICES_QUERY {
@@ -30,6 +31,13 @@ const ScrollableDevices: React.FC<ScrollableDevicesProps> = ({ selectedRoomId })
         device?.id ? (
           <div key={device.id} className={styling.rectangle}>
             <Link to={routes.device({ roomId: device.room_id.toString(), deviceId: device.id.toString() })} className={styling.deviceLinks}>{device.device_name}</Link>
+
+          <div className={styling.switch}>
+            <ToggleSwitch
+            checked={device.device_status}
+            onChange={() => {}} />
+          </div>
+
           </div>
         ) : null
       ))}
