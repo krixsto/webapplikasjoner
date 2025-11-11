@@ -106,7 +106,7 @@ const OverviewPage = () => {
             {showUserList && user_data && (
               <div className={styling.userDisplayOverlay}>
                 <div className={styling.userDisplayContent}>
-                  <UserListDisplay users={user_data.users}/>
+                  <UserListDisplay users={[currentUser]}/>
                   <h2 style={{ cursor: 'pointer' }} onClick={() => setShowUserList(!showUserList)}>{showUserList ? 'Hide members' : 'View members'}</h2>
                 </div>
               </div>
