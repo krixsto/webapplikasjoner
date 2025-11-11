@@ -6,10 +6,12 @@ export const schema = gql`
     id: Int!
     device_name: String!
     room_id: Int!
+    device_status: Boolean!
   }
 
   type Query {
     devices: [Device!]! @requireAuth
+    device(id: Int!): Device! @requireAuth
   }
 
   type SuccessMessage {
@@ -27,4 +29,3 @@ export const schema = gql`
     toggleAllDevices(status: Boolean!): Int! @requireAuth
   }
 `
-

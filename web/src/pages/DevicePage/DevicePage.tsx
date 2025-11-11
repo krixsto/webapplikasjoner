@@ -1,5 +1,5 @@
 import { Link, routes, navigate, useParams } from '@redwoodjs/router'
-import { Metadata, useMutation } from '@redwoodjs/web'
+import { Metadata, useMutation, useQuery } from '@redwoodjs/web'
 import MainLayout from 'src/layouts/MainLayout'
 import styling from './DevicePage.module.css'
 import DeleteButton from 'src/components/DeleteButton'
@@ -12,13 +12,32 @@ const DELETE_DEVICE_MUTATION = gql`
   }
 }
 `
+
+const GET_DEVICE_BY_ID = gql`
+  query GetDeviceById($id: Int!) {
+    device(id: $id) {
+      id
+      device_status
+    }
+  }
+`
+
 const DevicePage = () => {
   const { roomId, deviceId } = useParams()
+
+  const { data, loading, error } = useQuery(GET_DEVICE_BY_ID, {
+    variables: { id: parseInt(deviceId, 10) },
+  })
+
   const [deleteDevice] = useMutation(DELETE_DEVICE_MUTATION, {
     onCompleted: () => {
       navigate(routes.room({ roomId }))
     },
   })
+
+  if (loading) return <div>Loading...</div>
+  if (error) return <div>Error: {error.message}</div>
+  const device = data.device
 
   return (
     <>
@@ -36,8 +55,8 @@ const DevicePage = () => {
                 </h2>
               </Link>
               <div className={styling.rectangle}>
-                <h2 className={styling.normalText}>ID: 004</h2>
-                <h2 className={styling.normalText}>Status: OFF</h2>
+                <h2 className={styling.normalText}>ID: {device.id}</h2>
+                <h2 className={styling.normalText}>Status: {device.device_status ? 'ON' : 'OFF'}</h2>
                 <h2 className={styling.normalText}>Duration: 2h</h2>
               </div>
 

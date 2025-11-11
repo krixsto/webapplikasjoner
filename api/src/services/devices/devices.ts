@@ -5,6 +5,12 @@ export const devices = () => {
   return db.device.findMany()
 }
 
+export const device = ({ id }) => {
+  return db.device.findUnique({
+    where: { id },
+  })
+}
+
 interface CreateDeviceArgs {
   input: Prisma.DeviceCreateInput
 }
@@ -21,7 +27,7 @@ export const deleteDevice = ({ id }: DeleteDeviceArgs) => {
   return db.device.delete({where: { id } })
 }
 
-export const toggleAllDevices = async ({ status }: { status: boolean }) => {
+export const toggleAllDevices = ({ status }: { status: boolean }) => {
   return db.device.updateMany({
     data: { device_status: status },
   })
