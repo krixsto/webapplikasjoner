@@ -47,7 +47,7 @@ const RegisterPage = () => {
             </label>
             {error && <p className={styling.error}>{error}</p>}
             <button type="submit" className={styling.button}>REGISTER</button>
-            <a href="/">Log in to an existing account</a>
+            <a href="/">Log in to account</a>
           </form>
         </div>
       </AuthLayout>
