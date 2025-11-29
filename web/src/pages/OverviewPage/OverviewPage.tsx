@@ -37,7 +37,7 @@ const TOGGLE_ALL_DEVICES = gql`
 `
 
 const OverviewPage = () => {
-  const [allDevicesOn, setAllDevicesOn] = useState(false)
+  const [allDevicesOn, setAllDevicesOn] = useState(() => localStorage.getItem("allDevicesOn") === "true")
   const [toggleAllDevices] = useMutation(TOGGLE_ALL_DEVICES)
   const { currentUser } = useAuth()
   const [roomName, setRoomName] = useState('')
@@ -53,6 +53,10 @@ const OverviewPage = () => {
   useEffect(() => {
     localStorage.setItem("homeWork", homeWork);
   }, [homeWork])
+
+  useEffect(() => {
+    localStorage.setItem("allDevicesOn", String(allDevicesOn));
+  }, [allDevicesOn])
 
   const onSubmit = async (e: React.FormEvent) => {
     if (!roomName.trim()) return
@@ -81,14 +85,14 @@ const OverviewPage = () => {
             <div className={styling.sideArea}>
 
             <ToggleSwitch
-            checked={allDevicesOn}
-            onChange={() => {
-              const newStatus = !allDevicesOn
-              toggleAllDevices({ variables: { status: newStatus } })
-              setAllDevicesOn(newStatus)
-            }}
-            label={allDevicesOn ? 'Turn off all devices' : 'Turn on all devices'}
-          />
+              checked={allDevicesOn}
+              onChange={() => {
+                const newStatus = !allDevicesOn
+                toggleAllDevices({ variables: { status: newStatus } })
+                  setAllDevicesOn(newStatus)
+              }}
+              label={allDevicesOn ? 'Turn off all devices' : 'Turn on all devices'}
+            />
 
               <ScrollableRooms selectedHomeWork={homeWork}/>
             </div>
