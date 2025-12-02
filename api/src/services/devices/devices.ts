@@ -28,12 +28,13 @@ export const deleteDevice = ({ id }: DeleteDeviceArgs) => {
 }
 
 export const toggleAllDevices = async ({ status }: { status: boolean }) => {
-const userId = context.currentUser.id
+  const userId = context.currentUser.id
 
-const rooms = await db.room.findMany({
-  where: { userId },
-  select: { id: true},
-})
+  const rooms = await db.room.findMany({
+    where: { userId },
+    select: { id: true},
+  }
+)
 
 const roomIds = rooms.map((r) => r.id)
 
@@ -45,6 +46,19 @@ if (roomIds.length === 0) {
     where: {
       room_id: { in: roomIds },
       },
+    data: { device_status: status },
+  })
+}
+
+export const toggleDevice = ({
+  id,
+  status,
+}: {
+  id: number
+  status: boolean
+}) => {
+  return db.device.update({
+    where: { id },
     data: { device_status: status },
   })
 }
