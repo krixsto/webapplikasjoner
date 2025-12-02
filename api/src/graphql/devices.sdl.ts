@@ -6,6 +6,7 @@ export const schema = gql`
     device_name: String!
     room_id: Int!
     device_status: Boolean!
+    last_status_change: DateTime!
   }
 
   type Query {

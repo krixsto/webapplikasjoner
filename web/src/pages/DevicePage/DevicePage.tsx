@@ -18,6 +18,7 @@ const GET_DEVICE_BY_ID = gql`
     device(id: $id) {
       id
       device_status
+      last_status_change
     }
   }
 `
@@ -38,6 +39,8 @@ const DevicePage = () => {
   if (loading) return <div>Loading...</div>
   if (error) return <div>Error: {error.message}</div>
   const device = data.device
+  const durationInMilliseconds = Date.now() - new Date(device.last_status_change).getTime();
+  const durationInMinutes = Math.floor(durationInMilliseconds / 60000);
 
   return (
     <>
@@ -57,13 +60,12 @@ const DevicePage = () => {
               <div className={styling.rectangle}>
                 <h2 className={styling.normalText}>ID: {device.id}</h2>
                 <h2 className={styling.normalText}>Status: {device.device_status ? 'ON' : 'OFF'}</h2>
-                <h2 className={styling.normalText}>Duration: 2h</h2>
+                <h2 className={styling.normalText}>Duration: {durationInMinutes} minutes</h2>
               </div>
 
               <DeleteButton
               onClick={() => deleteDevice({ variables: { id: parseInt(deviceId, 10) } })}
-              className={styling.deleteText}
-              >
+              className={styling.deleteText}>
                 Delete device
               </DeleteButton>
 

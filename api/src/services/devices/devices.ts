@@ -46,7 +46,7 @@ if (roomIds.length === 0) {
     where: {
       room_id: { in: roomIds },
       },
-    data: { device_status: status },
+    data: { device_status: status, last_status_change: new Date() },
   })
 }
 
@@ -59,6 +59,6 @@ export const toggleDevice = ({
 }) => {
   return db.device.update({
     where: { id },
-    data: { device_status: status },
+    data: { device_status: status, last_status_change: new Date() },
   })
 }

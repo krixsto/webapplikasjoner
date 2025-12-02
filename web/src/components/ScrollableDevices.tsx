@@ -14,6 +14,7 @@ const DEVICES_QUERY = gql`
       device_name
       device_status
       room_id
+      last_status_change
     }
   }
 `
@@ -23,6 +24,7 @@ const TOGGLE_DEVICE = gql`
     toggleDevice(id: $id, status: $status) {
       id
       device_status
+      last_status_change
     }
   }
 `
@@ -40,6 +42,8 @@ const ScrollableDevices: React.FC<ScrollableDevicesProps> = ({ selectedRoomId })
     const saved = localStorage.getItem("deviceStates")
     return saved ? JSON.parse(saved) : {}
   })
+  const duration = Date.now() - new Date(devices.last_status_change).getTime();
+
 useEffect(() => {
     localStorage.setItem("deviceStates", JSON.stringify(deviceStates))
   }, [deviceStates])

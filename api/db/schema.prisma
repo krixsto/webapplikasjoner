@@ -29,8 +29,9 @@ model Room {
 }
 
 model Device {
-  id            Int     @id @default(autoincrement())
-  device_name   String
-  device_status Boolean @default(false)
-  room_id       Int
+  id                  Int     @id @default(autoincrement())
+  device_name         String
+  device_status       Boolean @default(false)
+  room_id             Int
+  last_status_change  DateTime @default(now())
 }
