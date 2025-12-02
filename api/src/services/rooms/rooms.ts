@@ -21,6 +21,9 @@ export const createRoom = ({ input }: CreateRoomArgs) => {
   return db.room.create({ data: input })
 }
 
-export const deleteRoom = ({ id }: DeleteRoomArgs) => {
+export const deleteRoom = async ({ id }: DeleteRoomArgs) => {
+  await db.device.deleteMany({
+    where: { room_id: id }
+  })
   return db.room.delete({ where: { id } })
 }
