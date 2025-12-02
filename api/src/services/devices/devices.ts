@@ -54,7 +54,7 @@ export const toggleDevice = ({
   id,
   status,
 }: {
-  id: number
+  id: number,
   status: boolean
 }) => {
   return db.device.update({

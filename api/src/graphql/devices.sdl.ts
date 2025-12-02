@@ -1,6 +1,6 @@
 import gql from 'graphql-tag'
 
-export const schema = gql
+export const schema = gql`
   type Device {
     id: Int!
     device_name: String!
@@ -28,3 +28,5 @@ export const schema = gql
     toggleAllDevices(status: Boolean!): Int! @requireAuth
     toggleDevice(id: Int!, status: Boolean!): Device! @requireAuth
   }
+  `
+
